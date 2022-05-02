@@ -10,11 +10,11 @@ int loop = 1;
 void gameSetup()
 {
   clearScreen(COLOR_BLACK);  // draw black background
-  drawString5x7(3, 152, "Player1: " , COLOR_WHITE, COLOR_BLACK);  // draw player 1 score box
+  drawString5x7(3, 152, "Player1: " , COLOR_ORANGE_RED, COLOR_BLACK);  // draw player 1 score box
   drawChar5x7(50, 152, playerScoreP, COLOR_WHITE, COLOR_BLACK);   // draw player 2 score
-  drawString5x7(65, 152, "CPU: " , COLOR_WHITE, COLOR_BLACK);     // draw CPU score box
+  drawString5x7(65, 152, "CPU: " , COLOR_ORANGE_RED, COLOR_BLACK);     // draw CPU score box
   drawChar5x7(118, 152, computerScoreP, COLOR_WHITE, COLOR_BLACK); // draw CPU score
-  drawRectOutline(2, 2, drawPosF[0], drawPosF[1], COLOR_WHITE);   // draw field online
+  drawRectOutline(2, 2, drawPosF[0], drawPosF[1], COLOR_BLUE);   // draw field online
   drawRectOutline(2, drawPosF[2], drawPosF[0], .5, COLOR_WHITE);   // draw half court line
   fillRectangle(drawPosC[0], drawPosC[1], 30, 3, COLOR_WHITE);    // draw top pad
   fillRectangle(drawPosP[0], drawPosP[1], 30, 3, COLOR_WHITE);    // draw bottom pad
@@ -24,13 +24,13 @@ void gameSetup()
 void endGameMessage()
 {
   clearScreen(COLOR_BLACK);  // black background
-  if(playerScore == 5)       // score limit == 5
+  if(playerScore == 6)       // score limit == 6
     {  // player 1 winner msg print
-      drawString5x7(3, screenWidth/2, "PLAYER 1 IS THE WINNER", COLOR_WHITE, COLOR_BLACK); 
+      drawString5x7(3, screenWidth/2, "PLAYER 1 IS THE WINNER!", COLOR_WHITE, COLOR_SKY_BLUE);
     }
-   else if (computerScore == 5)
+   else if (computerScore == 6)
      {  // CPU winner msg print
-      drawString5x7(3, screenWidth/2, "CPU IS THE WINNER", COLOR_WHITE, COLOR_BLACK);
+      drawString5x7(3, screenWidth/2, "CPU IS THE WINNER", COLOR_WHITE, COLOR_RED);
     }
 }
 
@@ -55,7 +55,7 @@ void main()
 	  redrawScreen = 0;
 	  update_shape();
 	}
-      if (playerScore == 5 || computerScore == 5)
+      if (playerScore == 6 || computerScore == 6)
 	{
 	  loop = 0;
 	}

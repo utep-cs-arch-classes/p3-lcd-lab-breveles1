@@ -6,14 +6,14 @@
 
 short drawPosP[2] = {(screenWidth / 2)-15, screenHeight-16};
 short drawPosC[2] = {(screenWidth / 2)-15, 5};
-short drawPosF[3] = {screenWidth-5, screenHeight-13, (screenHeight-15)/2};
-short drawPosB[2] = {(screenWidth/2)-6, ((screenHeight-15)/2)-5};
+short drawPosF[3] = {screenWidth-5, screenHeight-13, (screenHeight-15)/2};  // will draw court
+short drawPosB[2] = {(screenWidth/2)-6, ((screenHeight-15)/2)-5}; // vertical | horizontal
 short redrawScreen = 1;
 int playerScore = 0, computerScore = 0;
 char playerScoreP = 48, computerScoreP = 48;
 
 //local var
-short velocity[3] = {3,8,5};
+short velocity[3] = {6, 10, 15};
 short limits[4] = {3, screenWidth-4, 8, screenHeight-17}; // left | right | top | bottom.
 int directionC = 0;           // 0 = left ; 1 = right
 int directionB[2] = {0, 0};  // up | down ; left | right ; 0 -> left | down ; 1 -> right | up.
@@ -26,9 +26,9 @@ void drawDiamond(unsigned x, unsigned y, unsigned color)
 void
 update_shape(void)
 {
-  drawDiamond(drawPosB[0], drawPosB[1], COLOR_BLACK);   // will draw ball
+  drawDiamond(drawPosB[0], drawPosB[1],  COLOR_BLACK);   // will draw ball
   drawPosB[1] = drawPosB[1] + velocity[2];
-  drawDiamond(drawPosB[0], drawPosB[1], COLOR_WHITE);    // will draw ball
+  drawDiamond(drawPosB[0], drawPosB[1],  COLOR_WHITE);    // will draw ball
   drawRectOutline(2, drawPosF[2], drawPosF[0], .5, COLOR_WHITE);  // will draw half court line    
   if(directionB[0] = 0)
     {
@@ -84,9 +84,16 @@ update_shape(void)
       drawPosP[0] = drawPosP[0] - velocity[0];
       fillRectangle(drawPosP[0], drawPosP[1], 30, 3, COLOR_WHITE);
     }
-  if(switch1_down){
+  if(switch1_down){                             // will increment the score for the player
+                                                // to automatcilly win 
     playerScore++;
     playerScoreP++;
     drawChar5x7(50, 152, playerScoreP, COLOR_WHITE, COLOR_BLACK);
+
+    if(switch2_down){
+    computerScore++;
+    computerScoreP++;
+    drawChar5x7(50, 152, playerScoreP, COLOR_WHITE, COLOR_BLACK);
+    }
   }
 }
