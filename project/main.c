@@ -26,7 +26,10 @@ void endGameMessage()
   clearScreen(COLOR_BLACK);  // black background
   if(playerScore == 6)       // score limit == 6
     {  // player 1 winner msg print
-      drawString5x7(3, screenWidth/2, "PLAYER 1 IS THE WINNER!", COLOR_WHITE, COLOR_SKY_BLUE);
+     drawString5x7(3, screenWidth/2, "PLAYER 1 IS THE WINNER!", COLOR_WHITE, COLOR_SKY_BLUE);      
+     buzzer_init();  // set buzzer
+     buzzer_set_period(1000);   // buzzer will start
+     // buzzer_set_period(3000);  // changed sound frequency
     }
    else if (computerScore == 6)
      {  // CPU winner msg print
@@ -34,19 +37,24 @@ void endGameMessage()
     }
 }
 
-void main()
+int main(void)
 {
   P1DIR |= LED;    // LED will be on when the CPU is on
   P1OUT |= LED;
   configureClocks();
-  lcd_init();
-  switch_init();
-  buzzer_init();
-
+  lcd_init();     // LCD board
+  switch_init();  // switches
+  /*
+  buzzer_init();  // buzzer
+  buzzer_set_period(120); // buzzer will start
+  if(buzzer_set_period == 500);
+    {
+  buzzer_set_period(0);  //  buzzer will end 
+  }*/
   enableWDTInterrupts();         /** < enable periodic interrupt */
   or_sr(0x8);                   /**< GIE (enable interrupts) */
 
-  // sets up field and score board
+  // sets up court and score board
   gameSetup();
   while (loop)  // this loop will continue until someone is declared winner
     {

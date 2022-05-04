@@ -22,48 +22,44 @@ update_text(void)
   u_int off_color = (blue << 11)                | red;
   
   if (switch1_state == down) {
-    drawChar5x7(text_col, text_row, '1',on_color, backgroundColor);
+    drawChar5x7(text_col, text_row, 'h',on_color, backgroundColor);
   } else {
     drawChar5x7(text_col, text_row, '-',off_color, backgroundColor);
   }
   if (switch2_state == down) {
-    drawChar5x7(text_col + char_width, text_row, '2',on_color, backgroundColor);
+    drawChar5x7(text_col + char_width, text_row, 'i',on_color, backgroundColor);
   } else {
     drawChar5x7(text_col + char_width, text_row, '-',off_color, backgroundColor);
   }
-
 }
-
 
 
 void main(void)
 {
-  
+
+
   configureClocks();
   led_init();
   switch_p2_init();
   lcd_init();
-  
-  //enableWDTInterrupts();      /**< enable periodic interrupt */
-  or_sr(0x8);	              /**< GIE (enable interrupts) */
-  
+
+  //enableWDTInterrupts(_;            /**< enable periodic interrupt */
+  or_sr(0x8);                       /**< GIE ( enable interrupts) */
+
   clearScreen(backgroundColor);
 
-  while (1) {			/* forever */
-    if (redraw_screen) {
+  while (1) {                   /* forever */
+    if(redraw_screen) {
       redraw_screen = 0;
       update_text();
     }
-    green_on = 0;   	/* led off */
+    green_on = 0;                 /* led off */
     led_changed = 1;
     led_update();
-    or_sr(0x10);	/**< CPU OFF */
-    
-    green_on = 1;	/* led on */
+    or_sr(0x10);                /**< CPU OFF */
+
+    green_on = 1;              /* led on */
     led_changed = 1;
     led_update();
   }
-}
-
-    
-    
+ }

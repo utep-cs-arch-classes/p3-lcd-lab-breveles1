@@ -6,7 +6,7 @@ void
 draw_rectangle(void)
 {
   int height = 10;
-  int width  = 60;
+  int width  = 80;
   int row = 20, col = screenWidth / 2;
   int left_col = col - (width / 2);
   int top_row  = row - (height / 2);
@@ -17,7 +17,7 @@ draw_rectangle(void)
   fillRectangle(left_col, row, width, height, color);
 }
 
-
+  
 void
 draw_triangle(void)
 {

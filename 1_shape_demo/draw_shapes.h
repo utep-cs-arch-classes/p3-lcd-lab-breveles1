@@ -9,5 +9,5 @@ void draw_rectangle(void);
 void draw_triangle(void);
 /* draws a circle using bresenham's algorithm */
 void draw_circle(void);
-
+void border(void);
 #endif // _DRAW_SHAPES_H_

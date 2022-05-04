@@ -42,5 +42,6 @@ check_p2_switches(void)
   // that so the state variable is 1 when down
   switch1_state = (p2val & SW1) ? 0 : 1;
   switch2_state = (p2val & SW2) ? 0 : 1;
+
   redraw_screen = 1;            // switch status changed, redraw
 }
