@@ -14,6 +14,8 @@
 
 #define SWITCHES 15             /* 1 + 2 + 4 + 8 */
 
+// extern determined here but used somewhere else
+
 extern int switches;            /* current state of switches */
 extern char switch1_down;
 extern char switch2_down;

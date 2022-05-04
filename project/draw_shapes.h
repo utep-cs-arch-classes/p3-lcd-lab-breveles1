@@ -6,6 +6,8 @@
 #include "lcddraw.h"
 #include "switches.h"
 
+// extern determined here but used somewhere else
+
 extern short redrawScreen;
 extern short drawPosP[2];
 extern short drawPosC[2];

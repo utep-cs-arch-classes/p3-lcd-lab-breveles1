@@ -41,17 +41,13 @@ int main(void)
 {
   P1DIR |= LED;    // LED will be on when the CPU is on
   P1OUT |= LED;
+  
   configureClocks();
-  lcd_init();     // LCD board
-  switch_init();  // switches
-  /*
-  buzzer_init();  // buzzer
-  buzzer_set_period(120); // buzzer will start
-  if(buzzer_set_period == 500);
-    {
-  buzzer_set_period(0);  //  buzzer will end 
-  }*/
+  lcd_init();         // LCD board
+  switch_init();      // switches
+  //buzzer_init(); --->  buzzer set at endGameMessage
   enableWDTInterrupts();         /** < enable periodic interrupt */
+
   or_sr(0x8);                   /**< GIE (enable interrupts) */
 
   // sets up court and score board
