@@ -89,11 +89,10 @@ update_shape(void)
     playerScore++;
     playerScoreP++;
     drawChar5x7(50, 152, playerScoreP, COLOR_WHITE, COLOR_BLACK);
-
+  }
     if(switch2_down){
     computerScore++;
     computerScoreP++;
-    drawChar5x7(50, 152, playerScoreP, COLOR_WHITE, COLOR_BLACK);
+    drawChar5x7(118, 152 , computerScoreP, COLOR_WHITE, COLOR_BLACK);
     }
-  }
 }

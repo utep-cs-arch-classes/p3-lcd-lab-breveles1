@@ -17,5 +17,8 @@ main.elf: ${COMMON_OBJECTS} main.o
 load: main.elf
 	msp430loader.sh $^
 
+load_s: wdt_handler_s.elf
+	msp430loader.sh $^
+
 clean:
 	rm -f *.o *~ *.elf

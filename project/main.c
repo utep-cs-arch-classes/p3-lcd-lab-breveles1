@@ -28,12 +28,13 @@ void endGameMessage()
     {  // player 1 winner msg print
      drawString5x7(3, screenWidth/2, "PLAYER 1 IS THE WINNER!", COLOR_WHITE, COLOR_SKY_BLUE);      
      buzzer_init();  // set buzzer
-     buzzer_set_period(1000);   // buzzer will start
-     // buzzer_set_period(3000);  // changed sound frequency
+     buzzer_set_period(1000);   // buzzer will go off
     }
    else if (computerScore == 6)
      {  // CPU winner msg print
       drawString5x7(3, screenWidth/2, "CPU IS THE WINNER", COLOR_WHITE, COLOR_RED);
+      buzzer_init();
+      buzzer_set_period(3000);  // buzzer will go off in a different frequency
     }
 }
 
@@ -52,7 +53,7 @@ int main(void)
 
   // sets up court and score board
   gameSetup();
-  while (loop)  // this loop will continue until someone is declared winner
+   while (loop)  // this loop will continue until someone is declared winner
     {
       if(redrawScreen)
 	{
